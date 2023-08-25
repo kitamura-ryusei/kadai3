@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<% flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: message_type %>
+<% end %>
+
 <html>
   <head>
     <%= link_to "Bookers2", root_path %>
@@ -14,7 +19,7 @@
     <header>
       <% if user_signed_in? %>
         <li>
-          <%= link_to "Home" %>
+          <%= link_to "Home"%>
         </li>
         <li>
           <%= link_to "Users" %>
