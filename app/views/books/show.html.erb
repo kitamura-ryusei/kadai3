@@ -1,13 +1,32 @@
-<div>
-    <p><%= image_tag @book.user.get_profile_image(100, 100) %></p>
-    <p><%= @book.user.name %></p>
-    <p><%= @book.title %></p>
-    <p><%= @book.body %></p>
-    
+<div class="container">
+  <div class="row">
 
-    <% if @book.user == current_user %>
-      <p><%= link_to "Edit",edit_book_path(@book.id) %></p>
-      <p><%= link_to "Destroy",book_path(@book.id), method: :delete, "deta-confirm" => "本当に消しますか" %></p>
-    <% end %>
-    
+<%= render 'users/usersinfo', user: @book.user %>
+
+
+<div class="col-md-8 offset-md-1">
+  		<h2>Book detail</h2>
+  		<table class="table">
+  		  <tbody>
+  		    <tr>
+  		      <%= image_tag @book.user.get_profile_image(100, 100) %>
+  		    </tr>
+          <td>
+            <%= link_to @book.user.name, user_path(@book.user.id) %>
+          </td>
+          <td>
+            <%= @book.title %>
+          </td>
+          <td>
+            
+            <%= @book.body %>
+          </td>
+            <% if @book.user == current_user %>
+            <td><%= link_to "Edit",edit_book_path(@book.id) %></td>
+            <td><%= link_to "Destroy",book_path(@book.id), method: :delete, "deta-confirm" => "本当に消しますか" %></td>
+            <% end %>
+        </tr>
+      </tbody></table>
+    </div>
+  </div>
 </div>
